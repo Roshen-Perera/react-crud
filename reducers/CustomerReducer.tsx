@@ -7,9 +7,9 @@ export function CustomerReducer(state = initialState, action: { type: string , p
         case 'ADD_CUSTOMER':
             return [...state, action.payload];
         case 'DELETE_CUSTOMER':
-            return state.filter((student: Customer) => student.email !== action.payload.email);
+            return state.filter((customer: Customer) => customer.email !== action.payload.email);
         case 'UPDATE_CUSTOMER':
-            return state.map((student: Customer) => student.email === action.payload.email ? action.payload : student);
+            return state.map((customer: Customer) => customer.email === action.payload.email ? action.payload : customer);
         default:
             return state;
     }
