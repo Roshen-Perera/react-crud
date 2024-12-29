@@ -2,6 +2,8 @@ import './App.css'
 import {createBrowserRouter, RouterProvider} from "react-router";
 import {Customers} from "../pages/Customers.tsx";
 import {CustomerProvider} from "../store/CustomerProvider.tsx";
+import {ItemProvider} from "../store/ItemProvider.tsx";
+import {Items} from "../pages/Items.tsx";
 
 function App() {
     const routes = createBrowserRouter([
@@ -9,15 +11,18 @@ function App() {
             path: '',
             children : [
                 { path : '/customer', element : <Customers/>},
+                { path : '/item', element : <Items/>},
             ]
         },
     ])
 
     return (
         <>
-            <CustomerProvider>
-                <RouterProvider router={routes} />
-            </CustomerProvider>
+            <ItemProvider>
+                <CustomerProvider>
+                    <RouterProvider router={routes} />
+                </CustomerProvider>
+            </ItemProvider>
         </>
     )
 }
